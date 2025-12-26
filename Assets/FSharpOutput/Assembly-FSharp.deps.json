@@ -1,0 +1,42 @@
+{
+  "runtimeTarget": {
+    "name": ".NETStandard,Version=v2.0/",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETStandard,Version=v2.0": {},
+    ".NETStandard,Version=v2.0/": {
+      "Assembly-FSharp/1.0.0": {
+        "dependencies": {
+          "FSharp.Core": "9.0.300"
+        },
+        "runtime": {
+          "Assembly-FSharp.dll": {}
+        }
+      },
+      "FSharp.Core/9.0.300": {
+        "runtime": {
+          "lib/netstandard2.0/FSharp.Core.dll": {
+            "assemblyVersion": "9.0.0.0",
+            "fileVersion": "9.3.25.22803"
+          }
+        }
+      }
+    }
+  },
+  "libraries": {
+    "Assembly-FSharp/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "FSharp.Core/9.0.300": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-2ZDoF/N7WPidmaflrTnPucUJfaV5XkIHCh4h77yET7ihuv2dR2ksSsIiiDd34Z9YmwyYEQocpDl1r6RXFr0DMg==",
+      "path": "fsharp.core/9.0.300",
+      "hashPath": "fsharp.core.9.0.300.nupkg.sha512"
+    }
+  }
+}

@@ -1,0 +1,18 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ce1ccff7ca9aa46d3929b618a1b9b3c4, type: 3}
+  m_Name: FSharpSettings
+  m_EditorClassIdentifier: Gilzoide.FSharp.Editor::Gilzoide.FSharp.Editor.Internal.FSharpSettings
+  _scriptCompileOrder:
+  - {fileID: -6750239444755058063, guid: 8bfa399735f0a4e1c83252944b33b98a, type: 3}
+  - {fileID: -6750239444755058063, guid: 52f2a06c5414eed05a3f14d8a22cf5cd, type: 3}
+  _packageReferences: []
