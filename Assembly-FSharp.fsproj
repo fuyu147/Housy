@@ -38,6 +38,7 @@
   <ItemGroup>
     <Compile Include="Library/PackageCache/com.gilzoide.fsharp@1a7709d6d9f4/Scripts/FSharpGlobals.fs" />
     <Compile Include="Assets/Code/move.fs" />
+    <Compile Include="Assets/Code/camera.fs" />
   </ItemGroup>
   <ItemGroup Condition=" '$(Platform)' == 'Editor' " />
   <ItemGroup>

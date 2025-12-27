@@ -2,6 +2,7 @@ namespace proj
 
 open UnityEngine
 
+[<RequireComponent(typeof<Camera>)>]
 type MoveCamera() =
     inherit MonoBehaviour()
 
