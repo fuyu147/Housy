@@ -3,7 +3,7 @@
     "name": "Actions",
     "maps": [
         {
-            "name": "PlayerMovement",
+            "name": "Player",
             "id": "2d148fdb-880e-426c-9618-e9ffdc4bbdd2",
             "actions": [
                 {
@@ -12,6 +12,15 @@
                     "id": "b95d9381-fece-4d64-a05d-44a85d2b3372",
                     "expectedControlType": "Vector2",
                     "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                },
+                {
+                    "name": "LookAround",
+                    "type": "Value",
+                    "id": "527808e5-2637-4a49-9f34-e653cad3c8f1",
+                    "expectedControlType": "Vector2",
+                    "processors": "NormalizeVector2",
                     "interactions": "",
                     "initialStateCheck": true
                 }
@@ -71,6 +80,17 @@
                     "action": "Move",
                     "isComposite": false,
                     "isPartOfComposite": true
+                },
+                {
+                    "name": "",
+                    "id": "3b42bc27-c935-4c84-932d-741bbcc7aeec",
+                    "path": "<Mouse>/delta",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "LookAround",
+                    "isComposite": false,
+                    "isPartOfComposite": false
                 }
             ]
         }

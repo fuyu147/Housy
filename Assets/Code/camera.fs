@@ -1,19 +1,60 @@
 namespace proj
 
 open UnityEngine
+open UnityEngine.InputSystem
 
 [<RequireComponent(typeof<Camera>)>]
 type MoveCamera() =
     inherit MonoBehaviour()
 
     [<SerializeField>]
-    let movementSpeed = 100
+    let mutable playerToFollow: GameObject = null
 
     [<SerializeField>]
-    let rotationSpeed = 10
+    let mutable movementSpeed = 100f
 
     [<SerializeField>]
-    let offset = Vector3.zero
+    let mutable rotationSpeed = 10f
 
-    member _.Start() = ()
-    member _.Update() = ()
+    [<SerializeField>]
+    let mutable offset = Vector3.zero
+
+    [<SerializeField>]
+    let inputActions: InputActionAsset = null
+
+    let mutable cameraAction: InputAction = null
+
+    let mutable yaw = 0f
+    let mutable pitch = 0f
+
+    member _.Awake() =
+        let playerMap = inputActions.FindActionMap("Player", true)
+        cameraAction <- playerMap.FindAction("LookAround", true)
+
+    member _.OnEnable() = cameraAction.Enable()
+    member _.OnDisable() = cameraAction.Disable()
+
+    member _.Start() =
+        Cursor.lockState <- CursorLockMode.Locked
+        Cursor.visible <- false
+
+        ()
+
+    member this.Update() =
+        if playerToFollow <> null then
+            let mouseDelta = cameraAction.ReadValue<Vector2>()
+
+            yaw <- yaw + mouseDelta.x * rotationSpeed * Time.deltaTime
+            pitch <- Mathf.Clamp(pitch - mouseDelta.y * rotationSpeed * Time.deltaTime, -89f, 89f)
+
+            let rotation = Quaternion.Euler(pitch, yaw, 0f)
+            let rotatedOffset = rotation * offset
+
+            let targetPosition = playerToFollow.transform.position + rotatedOffset
+
+            this.transform.position <-
+                Vector3.Lerp(this.transform.position, targetPosition, movementSpeed * Time.deltaTime)
+
+            this.transform.rotation <- Quaternion.LookRotation(-rotatedOffset.normalized)
+
+        ()

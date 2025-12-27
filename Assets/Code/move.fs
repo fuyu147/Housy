@@ -11,21 +11,20 @@ type Movement() =
     [<SerializeField>]
     let inputActions: InputActionAsset = null
 
-    let mutable move: InputAction = null
+    [<SerializeField>]
+    let mutable movementSpeed = 50f
 
-    member _.OnEnable() = move.Enable()
-    member _.OnDisable() = move.Disable()
+    let mutable moveAction: InputAction = null
+
+    member _.OnEnable() = moveAction.Enable()
+    member _.OnDisable() = moveAction.Disable()
 
     member _.Awake() =
-        let playerMap = inputActions.FindActionMap("PlayerMovement", true)
-
-        move <- playerMap.FindAction("Move", true)
-        ()
+        let playerMap = inputActions.FindActionMap("Player", true)
+        moveAction <- playerMap.FindAction("Move", true)
 
     member this.Update() =
-        let mousePosition = Mouse.current.position.ReadValue()
-        Debug.Log <| sprintf "mouse position : <%f, %f>" mousePosition.x mousePosition.y
+        let movement = moveAction.ReadValue<Vector2>()
 
-        let movement = move.ReadValue<Vector2>()
-
-        Time.deltaTime * Vector3(movement.x, movement.y, 0f) |> this.transform.Translate
+        Time.deltaTime * movementSpeed * Vector3(movement.x, movement.y, 0f)
+        |> this.transform.Translate
