@@ -9,6 +9,9 @@ type Movement() =
     inherit MonoBehaviour()
 
     [<SerializeField>]
+    let mutable cameraGO: Camera = null
+
+    [<SerializeField>]
     let inputActions: InputActionAsset = null
 
     [<SerializeField>]
@@ -26,5 +29,7 @@ type Movement() =
     member this.Update() =
         let movement = moveAction.ReadValue<Vector2>()
 
-        Time.deltaTime * movementSpeed * Vector3(movement.x, movement.y, 0f)
+        Time.deltaTime * movementSpeed * Vector3(movement.x, 0f, movement.y)
         |> this.transform.Translate
+
+        ()

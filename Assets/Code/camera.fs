@@ -27,6 +27,8 @@ type MoveCamera() =
     let mutable yaw = 0f
     let mutable pitch = 0f
 
+    let shouldLockPlayerRotation = false
+
     member _.Awake() =
         let playerMap = inputActions.FindActionMap("Player", true)
         cameraAction <- playerMap.FindAction("LookAround", true)
@@ -42,6 +44,7 @@ type MoveCamera() =
 
     member this.Update() =
         if playerToFollow <> null then
+            // gère la rotation de la caméra
             let mouseDelta = cameraAction.ReadValue<Vector2>()
 
             yaw <- yaw + mouseDelta.x * rotationSpeed * Time.deltaTime
@@ -56,5 +59,13 @@ type MoveCamera() =
                 Vector3.Lerp(this.transform.position, targetPosition, movementSpeed * Time.deltaTime)
 
             this.transform.rotation <- Quaternion.LookRotation(-rotatedOffset.normalized)
+
+
+            // gère la rotation de l'objet suivi
+
+            if shouldLockPlayerRotation then
+                let angles = this.transform.rotation.eulerAngles
+                playerToFollow.transform.rotation <- Quaternion.Euler(0f, angles.y, 0f)
+
 
         ()
