@@ -16,7 +16,6 @@ type Movement() =
     member _.OnEnable() = move.Enable()
     member _.OnDisable() = move.Disable()
 
-    // this is a useless comment
     member _.Awake() =
         let playerMap = inputActions.FindActionMap("PlayerMovement", true)
 
