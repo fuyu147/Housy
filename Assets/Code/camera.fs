@@ -12,5 +12,8 @@ type MoveCamera() =
     [<SerializeField>]
     let rotationSpeed = 10
 
-    member _.Start () = ()
-    member _.Update () = ()
+    [<SerializeField>]
+    let offset = Vector3.zero
+
+    member _.Start() = ()
+    member _.Update() = ()
