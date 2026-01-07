@@ -249,10 +249,6 @@ MonoBehaviour:
   inputActions: {fileID: -944628639613478452, guid: 52e4ed2a69d7aa019a193a24dad00ac8, type: 3}
   movementSpeed: 10
   jumpForce: 10
-  maxOffgroundJump: 2
-  terrainLayer: 6
-  wallLayer: 7
-  ceilingLayer: 8
 --- !u!54 &686793273
 Rigidbody:
   m_ObjectHideFlags: 0

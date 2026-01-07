@@ -27,6 +27,7 @@ type MoveCamera() =
     let mutable yaw = 0f
     let mutable pitch = 0f
 
+    // peut-être prendre cette valeur d'un GameObject qui a le move.fs script?
     let shouldLockPlayerRotation = false
 
     member _.Awake() =
